@@ -99,6 +99,7 @@
 #include "socket/include/socket.h"
 #include "main.h"
 #include "PubNub.h"
+#include "nexa.h"
 
 #define STRING_EOL    "\r\n"
 #define STRING_HEADER "-- SAMW25 PubNub example --"STRING_EOL	\
@@ -265,6 +266,9 @@ int main(void)
 		puts("main: SysTick configuration error!");
 		while (1);
 	}
+	
+	/* Initialize NEXA Radio receiver */
+	receiver_init();
 
 	/* Initialize Temperature Sensor */
 	at30tse_init();

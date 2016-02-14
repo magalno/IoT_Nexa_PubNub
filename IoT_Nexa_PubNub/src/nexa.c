@@ -41,7 +41,7 @@ void receiver_init(void) {
 	configure_tc();
 	
 	/* Init external interrupt on CONF_EXTINT_PIN */
-	//reciever_data_pin_init();
+	reciever_data_pin_init();
 }
 
 void receiver_interruptHandler(void) {
