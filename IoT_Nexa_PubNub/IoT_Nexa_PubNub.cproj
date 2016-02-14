@@ -20,32 +20,38 @@
     <OverrideVtor>false</OverrideVtor>
     <CacheFlash>true</CacheFlash>
     <ProgFlashFromRam>true</ProgFlashFromRam>
-    <RamSnippetAddress />
+    <RamSnippetAddress>0x20000000</RamSnippetAddress>
     <UncachedRange />
     <preserveEEPROM>true</preserveEEPROM>
-    <OverrideVtorValue />
+    <OverrideVtorValue>exception_table</OverrideVtorValue>
     <BootSegment>2</BootSegment>
-    <eraseonlaunchrule>1</eraseonlaunchrule>
+    <eraseonlaunchrule>0</eraseonlaunchrule>
     <AsfFrameworkConfig>
       <framework-data>
   <options>
     <option id="common.boards" value="Add" config="" content-id="Atmel.ASF" />
     <option id="common.components.wifi.winc1500" value="Add" config="" content-id="Atmel.ASF" />
-    <option id="common.components.wifi.winc1500.pubnub_demo" value="Add" config="" content-id="Atmel.ASF" />
-    <option id="common.utils" value="Add" config="" content-id="Atmel.ASF" />
     <option id="sam0.components.sensor.at30tse75x" value="Add" config="" content-id="Atmel.ASF" />
     <option id="sam0.drivers.port" value="Add" config="" content-id="Atmel.ASF" />
     <option id="sam0.drivers.rtc" value="Add" config="calendar_callback" content-id="Atmel.ASF" />
     <option id="sam0.drivers.tcc" value="Add" config="callback" content-id="Atmel.ASF" />
+    <option id="sam0.utils.stdio.stdio_serial" value="Add" config="" content-id="Atmel.ASF" />
+    <option id="sam0.drivers.tc" value="Add" config="polled" content-id="Atmel.ASF" />
+    <option id="sam0.drivers.extint" value="Add" config="callback" content-id="Atmel.ASF" />
+    <option id="common.components.wifi.winc1500.pubnub_demo" value="Add" config="" content-id="Atmel.ASF" />
+    <option id="common.utils" value="Add" config="" content-id="Atmel.ASF" />
     <option id="sam0.utils" value="Add" config="" content-id="Atmel.ASF" />
     <option id="sam0.utils.cmsis.samd21.source.template" value="Add" config="" content-id="Atmel.ASF" />
     <option id="sam0.utils.stdio" value="Add" config="" content-id="Atmel.ASF" />
-    <option id="sam0.utils.stdio.stdio_serial" value="Add" config="" content-id="Atmel.ASF" />
   </options>
   <configurations>
     <configuration key="config.compiler.armgcc.create_aux" value="no" default="no" content-id="Atmel.ASF" />
     <configuration key="config.sam0.drivers.rtc" value="calendar_callback" default="calendar_callback" content-id="Atmel.ASF" />
     <configuration key="config.compiler.as5_arm.create_aux" value="no" default="no" content-id="Atmel.ASF" />
+    <configuration key="config.sam0.drivers.sercom.spi" value="callback" default="callback" content-id="Atmel.ASF" />
+    <configuration key="config.common2.services.delay" value="systick" default="systick" content-id="Atmel.ASF" />
+    <configuration key="config.sam0.drivers.sercom.i2c.master" value="callback" default="callback" content-id="Atmel.ASF" />
+    <configuration key="config.sam0.drivers.sercom.usart" value="callback" default="callback" content-id="Atmel.ASF" />
   </configurations>
   <files>
     <file path="src/ASF/common2/services/delay/delay.h" framework="" version="" source="common2/services/delay/delay.h" changed="False" content-id="Atmel.ASF" />
@@ -322,6 +328,8 @@
     <file path="src/ASF/thirdparty/CMSIS/Lib/license.txt" framework="" version="" source="thirdparty/CMSIS/Lib/license.txt" changed="False" content-id="Atmel.ASF" />
     <file path="src/ASF/thirdparty/CMSIS/README.txt" framework="" version="" source="thirdparty/CMSIS/README.txt" changed="False" content-id="Atmel.ASF" />
     <file path="src/ASF/thirdparty/CMSIS/license.txt" framework="" version="" source="thirdparty/CMSIS/license.txt" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/sam0/drivers/tc/tc.h" framework="" version="3.28.1" source="sam0\drivers\tc\tc.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/sam0/drivers/tc/tc_sam_d_r/tc.c" framework="" version="3.28.1" source="sam0\drivers\tc\tc_sam_d_r\tc.c" changed="False" content-id="Atmel.ASF" />
   </files>
   <documentation help="http://asf.atmel.com/docs/3.28.1/common.components.wifi.winc1500.pubnub_demo.samw25_xplained_pro/html/index.html" />
   <offline-documentation help="" />
@@ -332,6 +340,22 @@
   <board id="board.samw25_xplained_pro" value="Add" config="" content-id="Atmel.ASF" />
 </framework-data>
     </AsfFrameworkConfig>
+    <avrtool>com.atmel.avrdbg.tool.edbg</avrtool>
+    <avrtoolserialnumber>ATML2449020200003726</avrtoolserialnumber>
+    <avrdeviceexpectedsignature>0x10010005</avrdeviceexpectedsignature>
+    <avrtoolinterface>SWD</avrtoolinterface>
+    <com_atmel_avrdbg_tool_edbg>
+      <ToolOptions>
+        <InterfaceProperties>
+          <SwdClock>2000000</SwdClock>
+        </InterfaceProperties>
+        <InterfaceName>SWD</InterfaceName>
+      </ToolOptions>
+      <ToolType>com.atmel.avrdbg.tool.edbg</ToolType>
+      <ToolNumber>ATML2449020200003726</ToolNumber>
+      <ToolName>EDBG</ToolName>
+    </com_atmel_avrdbg_tool_edbg>
+    <avrtoolinterfaceclock>2000000</avrtoolinterfaceclock>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <ToolchainSettings>
@@ -354,6 +378,7 @@
       <Value>RTC_CALENDAR_ASYNC=true</Value>
       <Value>SYSTICK_MODE</Value>
       <Value>USART_CALLBACK_MODE=true</Value>
+      <Value>TC_ASYNC=false</Value>
     </ListValues>
   </armgcc.compiler.symbols.DefSymbols>
   <armgcc.compiler.directories.IncludePaths>
@@ -415,6 +440,8 @@
       <Value>../src/ASF/sam0/components/sensor/at30tse75x</Value>
       <Value>../src/ASF/common/services/serial</Value>
       <Value>../src/ASF/sam0/drivers/system/clock</Value>
+      <Value>../src/ASF/sam0/drivers/tc</Value>
+      <Value>../src/ASF/sam0/drivers/tc/tc_sam_d_r</Value>
     </ListValues>
   </armgcc.compiler.directories.IncludePaths>
   <armgcc.compiler.optimization.level>Optimize for size (-Os)</armgcc.compiler.optimization.level>
@@ -436,7 +463,12 @@
   </armgcc.linker.libraries.LibrarySearchPaths>
   <armgcc.linker.optimization.GarbageCollectUnusedSections>True</armgcc.linker.optimization.GarbageCollectUnusedSections>
   <armgcc.linker.miscellaneous.LinkerFlags>-Wl,--entry=Reset_Handler -Wl,--cref -mthumb -T../src/ASF/sam0/utils/linker_scripts/samd21/gcc/samd21g18a_flash.ld</armgcc.linker.miscellaneous.LinkerFlags>
-  <armgcc.preprocessingassembler.general.AssemblerFlags>-DARM_MATH_CM0PLUS=true -DBOARD=SAMW25_XPLAINED_PRO -DEXTINT_CALLBACK_MODE=true -DI2C_MASTER_CALLBACK_MODE=true -DRTC_CALENDAR_ASYNC=true -DSPI_CALLBACK_MODE=true -DSYSTICK_MODE -DTCC_ASYNC=true -DUSART_CALLBACK_MODE=true -D__SAMD21G18A__</armgcc.preprocessingassembler.general.AssemblerFlags>
+  <armgcc.assembler.general.IncludePaths>
+    <ListValues>
+      <Value>../src/ASF/sam0/drivers/tc/tc_sam_d_r</Value>
+    </ListValues>
+  </armgcc.assembler.general.IncludePaths>
+  <armgcc.preprocessingassembler.general.AssemblerFlags>-DARM_MATH_CM0PLUS=true -DBOARD=SAMW25_XPLAINED_PRO -DEXTINT_CALLBACK_MODE=true -DI2C_MASTER_CALLBACK_MODE=true -DRTC_CALENDAR_ASYNC=true -DSPI_CALLBACK_MODE=true -DSYSTICK_MODE -DTCC_ASYNC=true -DUSART_CALLBACK_MODE=true -D__SAMD21G18A__ -DTC_ASYNC=false</armgcc.preprocessingassembler.general.AssemblerFlags>
   <armgcc.preprocessingassembler.general.IncludePaths>
     <ListValues>
       <Value>../common/components/wifi/winc1500/pubnub_demo/samd21g18a_samw25_xplained_pro</Value>
@@ -496,6 +528,8 @@
       <Value>../src/ASF/sam0/components/sensor/at30tse75x</Value>
       <Value>../src/ASF/common/services/serial</Value>
       <Value>../src/ASF/sam0/drivers/system/clock</Value>
+      <Value>../src/ASF/sam0/drivers/tc</Value>
+      <Value>../src/ASF/sam0/drivers/tc/tc_sam_d_r</Value>
     </ListValues>
   </armgcc.preprocessingassembler.general.IncludePaths>
 </ArmGcc>
@@ -522,6 +556,7 @@
       <Value>RTC_CALENDAR_ASYNC=true</Value>
       <Value>SYSTICK_MODE</Value>
       <Value>USART_CALLBACK_MODE=true</Value>
+      <Value>TC_ASYNC=false</Value>
     </ListValues>
   </armgcc.compiler.symbols.DefSymbols>
   <armgcc.compiler.directories.IncludePaths>
@@ -583,6 +618,8 @@
       <Value>../src/ASF/sam0/components/sensor/at30tse75x</Value>
       <Value>../src/ASF/common/services/serial</Value>
       <Value>../src/ASF/sam0/drivers/system/clock</Value>
+      <Value>../src/ASF/sam0/drivers/tc</Value>
+      <Value>../src/ASF/sam0/drivers/tc/tc_sam_d_r</Value>
     </ListValues>
   </armgcc.compiler.directories.IncludePaths>
   <armgcc.compiler.optimization.level>Optimize (-O1)</armgcc.compiler.optimization.level>
@@ -605,8 +642,13 @@
   </armgcc.linker.libraries.LibrarySearchPaths>
   <armgcc.linker.optimization.GarbageCollectUnusedSections>True</armgcc.linker.optimization.GarbageCollectUnusedSections>
   <armgcc.linker.miscellaneous.LinkerFlags>-Wl,--entry=Reset_Handler -Wl,--cref -mthumb -T../src/ASF/sam0/utils/linker_scripts/samd21/gcc/samd21g18a_flash.ld</armgcc.linker.miscellaneous.LinkerFlags>
+  <armgcc.assembler.general.IncludePaths>
+    <ListValues>
+      <Value>../src/ASF/sam0/drivers/tc/tc_sam_d_r</Value>
+    </ListValues>
+  </armgcc.assembler.general.IncludePaths>
   <armgcc.assembler.debugging.DebugLevel>Default (-g)</armgcc.assembler.debugging.DebugLevel>
-  <armgcc.preprocessingassembler.general.AssemblerFlags>-DARM_MATH_CM0PLUS=true -DBOARD=SAMW25_XPLAINED_PRO -DEXTINT_CALLBACK_MODE=true -DI2C_MASTER_CALLBACK_MODE=true -DRTC_CALENDAR_ASYNC=true -DSPI_CALLBACK_MODE=true -DSYSTICK_MODE -DTCC_ASYNC=true -DUSART_CALLBACK_MODE=true -D__SAMD21G18A__</armgcc.preprocessingassembler.general.AssemblerFlags>
+  <armgcc.preprocessingassembler.general.AssemblerFlags>-DARM_MATH_CM0PLUS=true -DBOARD=SAMW25_XPLAINED_PRO -DEXTINT_CALLBACK_MODE=true -DI2C_MASTER_CALLBACK_MODE=true -DRTC_CALENDAR_ASYNC=true -DSPI_CALLBACK_MODE=true -DSYSTICK_MODE -DTCC_ASYNC=true -DUSART_CALLBACK_MODE=true -D__SAMD21G18A__ -DTC_ASYNC=false</armgcc.preprocessingassembler.general.AssemblerFlags>
   <armgcc.preprocessingassembler.general.IncludePaths>
     <ListValues>
       <Value>../common/components/wifi/winc1500/pubnub_demo/samd21g18a_samw25_xplained_pro</Value>
@@ -666,6 +708,8 @@
       <Value>../src/ASF/sam0/components/sensor/at30tse75x</Value>
       <Value>../src/ASF/common/services/serial</Value>
       <Value>../src/ASF/sam0/drivers/system/clock</Value>
+      <Value>../src/ASF/sam0/drivers/tc</Value>
+      <Value>../src/ASF/sam0/drivers/tc/tc_sam_d_r</Value>
     </ListValues>
   </armgcc.preprocessingassembler.general.IncludePaths>
   <armgcc.preprocessingassembler.debugging.DebugLevel>Default (-Wa,-g)</armgcc.preprocessingassembler.debugging.DebugLevel>
@@ -758,6 +802,8 @@
     <Folder Include="src\ASF\sam0\drivers\tcc\quick_start_faultn\" />
     <Folder Include="src\ASF\sam0\drivers\tcc\quick_start_faultx\" />
     <Folder Include="src\ASF\sam0\drivers\tcc\quick_start_timer\" />
+    <Folder Include="src\ASF\sam0\drivers\tc\" />
+    <Folder Include="src\ASF\sam0\drivers\tc\tc_sam_d_r\" />
     <Folder Include="src\ASF\sam0\utils\" />
     <Folder Include="src\ASF\sam0\utils\cmsis\" />
     <Folder Include="src\ASF\sam0\utils\cmsis\samd21\" />
@@ -1584,6 +1630,12 @@
     <Compile Include="src\ASF\sam0\drivers\tcc\tcc_callback.c">
       <SubType>compile</SubType>
     </Compile>
+    <None Include="src\ASF\sam0\drivers\tc\tc.h">
+      <SubType>compile</SubType>
+    </None>
+    <Compile Include="src\ASF\sam0\drivers\tc\tc_sam_d_r\tc.c">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="src\ASF\sam0\utils\cmsis\samd21\source\gcc\startup_samd21.c">
       <SubType>compile</SubType>
     </Compile>
@@ -1603,6 +1655,12 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="src\main.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\nexa.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\nexa.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="src\PubNub.c">
